@@ -1,6 +1,6 @@
-import React from 'react'
-import BookCSS from './Book.module.css'
-import BookSVG from '../svg/book.svg'
+import React from 'react';
+import BookCSS from './Book.module.css';
+import BookSVG from '../svg/book.svg';
 
 interface Book {
     id: number;
