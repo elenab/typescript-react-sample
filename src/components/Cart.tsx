@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
 import CartCSS from './Cart.module.css';
+import { AppStateContext } from './AppState'
 
 interface Props { }
 
@@ -42,25 +43,37 @@ class Cart extends React.Component<Props, State> {
         this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
     }
 
+
     render() {
         return (
-            <div className={CartCSS.cartContainer}>
-                <button className={CartCSS.button}
-                    type="button"
-                    onClick={this.handleClick}>
-                    <FiShoppingCart />
-                    <span>2 book(s)</span>
-                </button>
-                <div className={CartCSS.cartDropDown}
-                    style={{
-                        display: this.state.isOpen ? 'block' : 'none',
-                    }}>
-                    <ul>
-                        <li>Bad Kitty: Camp Daze</li>
-                        <li>Bad Kitty Goes to the Vet</li>
-                    </ul>
-                </div>
-            </div>
+            // the context api provides hooks for accessing the context value, but we cannot use hooks in class components
+            // so in class components we can use renderProps api
+
+            // a context object includes, together with Provider component, the Consumer component.
+            // and we can use this component to access the context value through a child function (render props api)
+            <AppStateContext.Consumer>{(state) => {
+                return (
+                    <div className={CartCSS.cartContainer}>
+                        <button className={CartCSS.button}
+                            type="button"
+                            onClick={this.handleClick}>
+                            <FiShoppingCart />
+                            <span>{state.cart.items.length} book(s)</span>
+                        </button>
+                        <div className={CartCSS.cartDropDown}
+                            style={{
+                                display: this.state.isOpen ? 'block' : 'none',
+                            }}>
+                            <ul>
+                                {state.cart.items.map(item => {
+                                    return <li key={item.id}>{item.name} &times; {item.quantity}</li>
+                                })}
+                            </ul>
+                        </div>
+                    </div>)
+            }}</AppStateContext.Consumer>
+
+
         )
     }
 

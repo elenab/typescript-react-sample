@@ -1,16 +1,16 @@
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 10px;
 }
 
 .header {
-  margin: 0 0 40px;
+  margin: 0 0 20px;
   text-align: center;
 }
 
 .siteTitle {
-  font-size: 32px;
+  font-size: 30px;
   margin: 0 0 5px;
 }
 
