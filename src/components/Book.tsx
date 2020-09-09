@@ -1,5 +1,6 @@
 import React from 'react'
 import BookCSS from './Book.module.css'
+import BookSVG from '../svg/book.svg'
 
 interface Book {
     id: number;
@@ -13,12 +14,16 @@ interface Props {
 }
 const Book: React.FC<Props> = ({ book }) => {
     return (
-        <li className={BookCSS.container}>
-            <h2>{book.name}</h2>
-            <p>{book.description}</p>
-            <p>{book.price}$</p>
+        <div>
+            <li className={BookCSS.container}>
+                <BookSVG width={40} height={40} />
+                <h2>{book.name}</h2>
+                <p>{book.description}</p>
+                <p>{book.price}$</p>
 
-        </li>)
+            </li>
+
+        </div>)
 }
 
 export default Book;

@@ -1,22 +1,21 @@
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 15px;
-  }
-  
-  .header {
-    margin: 0 0 50px;
-    text-align: center;
-  }
-  
-  .siteTitle {
-    font-size: 32px;
-    margin: 0 0 10px;
-  }
-  
-  .bookList {
-    list-style: none;
-    margin: 0 0 20px;
-    padding: 0;
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.header {
+  margin: 0 0 40px;
+  text-align: center;
+}
+
+.siteTitle {
+  font-size: 32px;
+  margin: 0 0 5px;
+}
+
+.bookList {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
