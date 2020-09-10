@@ -1,12 +1,12 @@
 import React from 'react';
 import BookCSS from './Book.module.css';
 import BookSVG from '../svg/book.svg';
-import { Book as BookItem } from '../types'
+import { Book } from '../types'
 import { withAddToCart, AddToCartProps } from './AddToCart';
 
 interface Props extends AddToCartProps {
-    book: BookItem;
-}
+    book: Book;
+};
 const BookItem: React.FC<Props> = ({ book, addToCart }) => {
     const handleAddToCartClick = () => {
         addToCart({id: book.id, name: book.name, price: book.price});

@@ -17,9 +17,25 @@ export function withAddToCart<OriginalProps extends AddToCartProps>(
                 }
             })
         };
-        
+
         return <ChildComponent {...props as OriginalProps} addToCart={handleAddToCartClick} />;
     };
 
     return AddToCartHOC;
+}
+
+export const WithAddToCartProps: React.FC<{
+    children: (props: AddToCartProps) => JSX.Element;
+        }> = ({ children }) => {
+            const dispatch = useStateDispatch();
+            const addToCart: AddToCartProps['addToCart'] = (item) => {
+            dispatch({
+                type: 'ADD_TO_CART',
+                payload: {
+                    item,
+                }
+            })
+    };
+
+    return children({ addToCart })
 }

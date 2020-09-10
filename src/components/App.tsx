@@ -1,10 +1,10 @@
 import React from 'react';
 import books from '../data/kids-books.json';
-import BookItem from './Book';
 import Cart from './Cart';
 import AppCSS from './App.module.css';
 import BooksSVG from '../svg/books.svg';
 import AppStateProvider from './AppState'
+import BookItem from './Book';
 import SpecialOffer from './SpecialOffer';
 
 const App = () => {
