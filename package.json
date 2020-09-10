@@ -4,15 +4,21 @@
   "description": "## Webpack setup Let's set up a simple webpack starter project.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "webpack-dev-server --open --mode development"
+    "build": "npm run type-check && webpack --mode production",
+    "start": "webpack-dev-server --open --mode development",
+    "type-check": "tsc"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-typescript": "^7.10.4",
     "@svgr/webpack": "^5.4.0",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
+    "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "html-webpack-plugin": "^4.4.1",
     "mini-css-extract-plugin": "^0.11.1",

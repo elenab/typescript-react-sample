@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
 import CartCSS from './Cart.module.css';
 import { AppStateContext } from './AppState'
@@ -10,6 +10,8 @@ interface State {
 }
 
 class Cart extends React.Component<Props, State> {
+    #containerRef: React.RefObject<HTMLDivElement>;
+
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -17,6 +19,9 @@ class Cart extends React.Component<Props, State> {
         };
         //using bind:
         // this.handleClick = this.handleClick.bind(this);
+
+        //Initialize the ref
+        this.#containerRef = createRef();
     }
     //using bind:
     // handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -43,6 +48,18 @@ class Cart extends React.Component<Props, State> {
         this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
     }
 
+    handleOutsideClick = (e: MouseEvent) => {
+        if (this.#containerRef.current && !this.#containerRef.current.contains(e.target as Node)) {
+            this.setState({ isOpen: false });
+        }
+    };
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleOutsideClick);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleOutsideClick);
+    }
 
     render() {
         return (
@@ -52,30 +69,30 @@ class Cart extends React.Component<Props, State> {
             // a context object includes, together with Provider component, the Consumer component.
             // and we can use this component to access the context value through a child function (render props api)
             <AppStateContext.Consumer>
-            {(state) => {
-                const itemsCount = state.cart.items.reduce((sum, item) => {
-                    return sum + item.quantity;
-                }, 0);
-                return (
-                    <div className={CartCSS.cartContainer}>
-                        <button className={CartCSS.button}
-                            type="button"
-                            onClick={this.handleClick}>
-                            <FiShoppingCart />
-                            <span>{itemsCount} book(s)</span>
-                        </button>
-                        <div className={CartCSS.cartDropDown}
-                            style={{
-                                display: this.state.isOpen ? 'block' : 'none',
-                            }}>
-                            <ul>
-                                {state.cart.items.map(item => {
-                                    return <li key={item.id}>{item.name} &times; {item.quantity}</li>
-                                })}
-                            </ul>
-                        </div>
-                    </div>)
-            }}</AppStateContext.Consumer>
+                {(state) => {
+                    const itemsCount = state.cart.items.reduce((sum, item) => {
+                        return sum + item.quantity;
+                    }, 0);
+                    return (
+                        <div className={CartCSS.cartContainer} ref={this.#containerRef}>
+                            <button className={CartCSS.button}
+                                type="button"
+                                onClick={this.handleClick}>
+                                <FiShoppingCart />
+                                <span>{itemsCount} book(s)</span>
+                            </button>
+                            <div className={CartCSS.cartDropDown}
+                                style={{
+                                    display: this.state.isOpen ? 'block' : 'none',
+                                }}>
+                                <ul>
+                                    {state.cart.items.map(item => {
+                                        return <li key={item.id}>{item.name} &times; {item.quantity}</li>
+                                    })}
+                                </ul>
+                            </div>
+                        </div>)
+                }}</AppStateContext.Consumer>
 
 
         )
