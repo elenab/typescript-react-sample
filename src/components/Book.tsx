@@ -2,12 +2,13 @@ import React from 'react';
 import BookCSS from './Book.module.css';
 import BookSVG from '../svg/book.svg';
 import { Book } from '../types'
-import { withAddToCart, AddToCartProps } from './AddToCart';
+import { useAddToCart } from './AddToCart';
 
-interface Props extends AddToCartProps {
+interface Props {
     book: Book;
 };
-const BookItem: React.FC<Props> = ({ book, addToCart }) => {
+const BookItem: React.FC<Props> = ({ book }) => {
+    const addToCart = useAddToCart();
     const handleAddToCartClick = () => {
         addToCart({id: book.id, name: book.name, price: book.price});
     };
@@ -26,4 +27,4 @@ const BookItem: React.FC<Props> = ({ book, addToCart }) => {
         </div>)
 }
 
-export default withAddToCart(BookItem);
+export default BookItem;
