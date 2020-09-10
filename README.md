@@ -6,4 +6,4 @@
 `npm start`
 
 
-![Web App] (docs/books.png)
+![Screenshot](docs/books.png?raw=true "Screenshot")
