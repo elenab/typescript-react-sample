@@ -1,7 +1,7 @@
 import React from 'react';
 import BookCSS from './Book.module.css';
 import BookSVG from '../svg/book.svg';
-import { useSetState  } from './AppState'
+import { useStateDispatch } from './AppState'
 
 interface Book {
     id: number;
@@ -14,34 +14,17 @@ interface Props {
     book: Book;
 }
 const Book: React.FC<Props> = ({ book }) => {
-    const setState = useSetState();
+    const dispatch = useStateDispatch();
     const handleAddToCartClick = () => {
-        setState((state) => {
-          const itemExists = state.cart.items.find((item) => item.id === book.id);
-          return {
-            ...state,
-            cart: {
-              ...state.cart,
-              items: itemExists
-                ? state.cart.items.map((item) => {
-                    if (item.id === book.id) {
-                      return { ...item, quantity: item.quantity + 1 };
-                    }
-                    return item;
-                  })
-                : [
-                    ...state.cart.items,
-                    {
-                      id: book.id,
-                      name: book.name,
-                      price: book.price,
-                      quantity: 1,
-                    },
-                  ],
-            },
-          };
-        });
-      };
+        dispatch({
+            type: 'ADD_TO_CART',
+            payload: {
+                item: {
+                    id: book.id, name: book.name, price: book.price
+                }
+            }
+        })
+    };
     return (
         <div>
             <li className={BookCSS.container}>

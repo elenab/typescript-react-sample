@@ -30,15 +30,15 @@ class Cart extends React.Component<Props, State> {
         //Because the target can refer to any child element within the clicked element, TypeScript cannot figure out its type, and that's why
         //Typescript describes it using a type that's common to most HTML elements: the `EventTarget` interface
         //e.currentTarget is the element where the event handler is attached to
-        console.log("e.target: ", e.target);
-        console.log("e.currentTarget: ", e.currentTarget);
+        // console.log("e.target: ", e.target);
+        // console.log("e.currentTarget: ", e.currentTarget);
 
         if ((e.target as HTMLElement).nodeName === 'SPAN') {
             //now we can work with the target as with a span element. it has all the proprieties
             //in order to work with the target property, we can assert that the target is a particular HTML element
             //check the type definitions of the target before working with it
             let tempElement = (e.target as HTMLSpanElement);
-            console.log(tempElement.offsetHeight)
+            // console.log(tempElement.offsetHeight)
         }
         this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
     }
@@ -51,14 +51,18 @@ class Cart extends React.Component<Props, State> {
 
             // a context object includes, together with Provider component, the Consumer component.
             // and we can use this component to access the context value through a child function (render props api)
-            <AppStateContext.Consumer>{(state) => {
+            <AppStateContext.Consumer>
+            {(state) => {
+                const itemsCount = state.cart.items.reduce((sum, item) => {
+                    return sum + item.quantity;
+                }, 0);
                 return (
                     <div className={CartCSS.cartContainer}>
                         <button className={CartCSS.button}
                             type="button"
                             onClick={this.handleClick}>
                             <FiShoppingCart />
-                            <span>{state.cart.items.length} book(s)</span>
+                            <span>{itemsCount} book(s)</span>
                         </button>
                         <div className={CartCSS.cartDropDown}
                             style={{
