@@ -1,29 +1,15 @@
 import React from 'react';
 import BookCSS from './Book.module.css';
 import BookSVG from '../svg/book.svg';
-import { useStateDispatch } from './AppState'
+import { Book as BookItem } from '../types'
+import { withAddToCart, AddToCartProps } from './AddToCart';
 
-interface Book {
-    id: number;
-    name: string;
-    description: string;
-    price: number;
+interface Props extends AddToCartProps {
+    book: BookItem;
 }
-
-interface Props {
-    book: Book;
-}
-const Book: React.FC<Props> = ({ book }) => {
-    const dispatch = useStateDispatch();
+const BookItem: React.FC<Props> = ({ book, addToCart }) => {
     const handleAddToCartClick = () => {
-        dispatch({
-            type: 'ADD_TO_CART',
-            payload: {
-                item: {
-                    id: book.id, name: book.name, price: book.price
-                }
-            }
-        })
+        addToCart({id: book.id, name: book.name, price: book.price});
     };
     return (
         <div>
@@ -40,4 +26,4 @@ const Book: React.FC<Props> = ({ book }) => {
         </div>)
 }
 
-export default Book;
+export default withAddToCart(BookItem);

@@ -1,26 +1,27 @@
 [
-    {
-      "id": 1,
-      "name": "Bad Kitty: Kitten trouble",
-      "description": "Bad Kitty has a visit from some young feline frenemies in this twelfth installment of the New York Times bestselling chapter book series.",
-      "price": 9.41
-    },
-    {
-      "id": 2,
-      "name": "Bad Kitty: Camp Daze",
-      "description": "Bad Kitty is headed for a camp experience like no other in the eleventh installment of Nick Bruel's bestselling Bad Kitty chapter book series.",
-      "price": 8.95
-    },
-    {
-      "id": 3,
-      "name": "Bad Kitty: Puppy's Big Day",
-      "description": "Bad Kitty's in a bad mood . . . a very bad mood, and Puppy is not helping.\nEnter Uncle Murray, who's tasked with taking care of Puppy for the day, but that's when the trouble begins. When they go on a walk through the park, Uncle Murray almost gets himself arrested while Puppy ends up in the pound, where he meets some very peculiar new pals.",
-      "price": 7.91
-    },
-    {
-      "id": 4,
-      "name": "Bad Kitty Goes to the Vet",
-      "description": "When Kitty is happy and healthy, everything is perfect. She jumps around, eats everything in sight and has the energy to keep slobbering puppies in their place. But when she's sick, all she can do is lie in her bed. Looks like it's time for this sick kitty to go... to the vet..",
-      "price": 9.75
-    }
-  ]
+  {
+    "id": 1,
+    "name": "Bad Kitty: Kitten trouble",
+    "description": "Bad Kitty has a visit from some young feline frenemies in this twelfth installment of the New York Times bestselling chapter book series.",
+    "price": 9.41
+  },
+  {
+    "id": 2,
+    "name": "Bad Kitty: Camp Daze",
+    "description": "Bad Kitty is headed for a camp experience like no other in the eleventh installment of Nick Bruel's bestselling Bad Kitty chapter book series.",
+    "price": 8.95
+  },
+  {
+    "id": 3,
+    "name": "Bad Kitty: Puppy's Big Day",
+    "description": "Bad Kitty's in a bad mood . . . a very bad mood, and Puppy is not helping.\nEnter Uncle Murray, who's tasked with taking care of Puppy for the day, but that's when the trouble begins. When they go on a walk through the park, Uncle Murray almost gets himself arrested while Puppy ends up in the pound, where he meets some very peculiar new pals.",
+    "price": 6.91,
+    "specialOffer": true
+  },
+  {
+    "id": 4,
+    "name": "Bad Kitty Goes to the Vet",
+    "description": "When Kitty is happy and healthy, everything is perfect. She jumps around, eats everything in sight and has the energy to keep slobbering puppies in their place. But when she's sick, all she can do is lie in her bed. Looks like it's time for this sick kitty to go... to the vet..",
+    "price": 9.75
+  }
+]
